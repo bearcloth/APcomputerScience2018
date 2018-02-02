@@ -76,13 +76,12 @@ class Lesson_20_Activity
         Scanner scan = new Scanner(System.in);
 
         double latitude, longitude;
-        double tempLat = 899.0;
-        double tempLong = 899.0;
-        double maxLat = 0.0;
-        double maxLong = 0.0;
-        double minLat = 0.0;
-        double minLong = 0.0;
-
+        double minLat, minLong;
+        double maxLat, maxLong;
+        minLat = 90;
+        maxLat = -90;
+        minLong = 180;
+        minLat = -180;
         int flag = 1;
         
         while(flag == 1)
@@ -92,43 +91,31 @@ class Lesson_20_Activity
             System.out.println("Please enter the longitude: ");
             longitude = scan.nextDouble();
 
-            if(!(latitude >= -90 && latitude <= 90)/* || !(longitude >= -180 && longitude <= 180)*/)
+            while(!(latitude <= -90 || latitude >= 90 || longitude <= -180 || longitude >= 180)
             {
-                System.out.println("Incorrect Latitude or Longitude");
-                continue;
+                System.out.println("Incorrect latitude or longitude");
+                System.out.println("Please enter the latitude: ");
+                latitude = scan.nextDouble();
+                System.out.println("Please enter the longitude: ");
+                longitude = scan.nextDouble();
             }
 
-            if(tempLat == 899.0 && tempLong == 899.0)
-            {
-                tempLat = latitude;
-                tempLong = longitude;
-            }
+            minLat = Math.min(latitude, minLat);
 
-            if(latitude <= tempLat)
-            {
-                maxLat = tempLat;
-                tempLat = latitude;
-            }
+            minLong = Math.min(longitude, minLong);
 
-            if(longitude <= tempLong)
-            {
-                maxLong = longitude;
-                tempLong = longitude;
-            }
+            maxLat = Math.max(latitude, maxLat);
+
+            maxLong = Math.max(longitude, maxLong);
 
             System.out.println("Woud you like to enter anther location? ");
-            flag = scan.nextInt();
-
-            if(flag == 0)
-            {
-                System.out.println("Farthest North: " + maxLong);
-               // System.out.println("Farthest South: " + minLong);
-                System.out.println("Farthest East: " + maxLat);
-                //System.out.println("Farthest West: " + minLat);
-
-                break;
-            }
+            flag = scan.nextInt();  
         }
+
+        System.out.println("Farthest North: " + maxLat );
+        System.out.println("Farthest South: " + minLat );
+        System.out.println("Farthest East: " + maxLong );
+        System.out.println("Farthest West: " + minLong );
 
         
 

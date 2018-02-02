@@ -69,58 +69,64 @@
 import java.util.Scanner;
 import java.lang.Math; 
 
-class Lesson_20_Activity
+public class Lesson_20_Activity
 {
     public static void main(String[] args)
      {
         Scanner scan = new Scanner(System.in);
 
         double latitude, longitude;
-        double tempLat = 899.0;
-        double tempLong = 899.0;
-        double maxLat = 0.0;
-        double maxLong = 0.0;
-        double minLat = 0.0;
-        double minLong = 0.0;
-        double curLat = 0.1;
-        double curLong = 0.1;
-
+        double minLat, minLong;
+        double maxLat, maxLong;
+        minLat = 90;
+        maxLat = -90;
+        maxLong = -180;
+        minLong = 180;
         int flag = 1;
         
         while(flag == 1)
         {
-            System.out.println("Please enter the latitude: ");
-            latitude = scan.nextDouble();
-           // System.out.println("Please enter the longitude: ");
-           // longitude = scan.nextDouble();
-
-            if(!(latitude >= -90 && latitude <= 90)/* || !(longitude >= -180 && longitude <= 180)*/)
-            {
-                System.out.println("Incorrect Latitude or Longitude");
-                continue;
+            while(true) {
+                latitude = inputLat(scan);
+                longitude = inputLong(scan);
+                if (validLatLong(latitude, longitude)) {
+                    break;
+                }
+                System.out.println("Incorrect latitude or longitude");
             }
 
-            if(tempLat == 899.0 && tempLong == 899.0)
-            {
-                tempLat = latitude;
-              //  tempLong = longitude;
-            }
+            minLat = Math.min(latitude, minLat);
+
+            minLong = Math.min(longitude, minLong);
+
+            maxLat = Math.max(latitude, maxLat);
+
+            maxLong = Math.max(longitude, maxLong);
 
             System.out.println("Woud you like to enter anther location? ");
-            flag = scan.nextInt();
-
-            if(flag == 0)
-            {
-                System.out.println("Farthest North: " + maxLong);
-               // System.out.println("Farthest South: " + minLong);
-                System.out.println("Farthest East: " + curLat);
-                //System.out.println("Farthest West: " + minLat);
-
-                break;
-            }
+            flag = scan.nextInt();  
         }
+
+        System.out.println("Farthest North: " + maxLat );
+        System.out.println("Farthest South: " + minLat );
+        System.out.println("Farthest East: " + maxLong );
+        System.out.println("Farthest West: " + minLong );
 
         
 
      }
+
+    private static double inputLong(Scanner scan) {
+        System.out.println("Please enter the longitude: ");
+        return scan.nextDouble();
+    }
+
+    private static double inputLat(Scanner scan) {
+        System.out.println("Please enter the latitude: ");
+        return scan.nextDouble();
+    }
+
+    private static boolean validLatLong(double latitude, double longitude) {
+        return !(latitude <= -90 || latitude >= 90 || longitude <= -180 || longitude >= 180);
+    }
 }
