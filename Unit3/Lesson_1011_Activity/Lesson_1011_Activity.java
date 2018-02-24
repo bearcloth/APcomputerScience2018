@@ -58,7 +58,7 @@ class Lesson_1011_Activity{
     int mod = 10;
     int div = 10;
     int tmp = octalNum;
-    int sum = 1;
+    int sum = 0;
     int numPlace = 0;
     int mult = 1;
     
@@ -98,7 +98,7 @@ class Lesson_1011_Activity{
       numPlace++;
     }
     
-    System.out.println(sum - 1);
+    System.out.println(sum);
    
   }
   
