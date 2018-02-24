@@ -105,7 +105,6 @@ class Lesson_1011_Activity{
   public static void main(String[] args)
   {
     Scanner scan = new Scanner(System.in);
-    int count = 0;
     
     System.out.println("Enter a number in base 8: ");
     int octalNum = scan.nextInt();
