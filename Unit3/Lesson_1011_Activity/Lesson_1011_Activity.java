@@ -58,7 +58,7 @@ class Lesson_1011_Activity{
     int mod = 10;
     int div = 10;
     int tmp = octalNum;
-    int sum = 1;
+    int sum = 0;
     int numPlace = 0;
     int mult = 1;
     
@@ -98,14 +98,13 @@ class Lesson_1011_Activity{
       numPlace++;
     }
     
-    System.out.println(sum - 1);
+    System.out.println(sum);
    
   }
   
   public static void main(String[] args)
   {
     Scanner scan = new Scanner(System.in);
-    int count = 0;
     
     System.out.println("Enter a number in base 8: ");
     int octalNum = scan.nextInt();
