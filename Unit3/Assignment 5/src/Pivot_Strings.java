@@ -2,36 +2,35 @@ import java.util.Scanner;
 import java.lang.Math;
 import java.lang.String;
 
-public class Pivot_Strings {
-
-    public static String messageRecieve(Scanner scan)
+class Main
+{
+  public static void main(String[] args)
+  {
+    Scanner scan = new Scanner(System.in);
+    
+    String message;
+    String pivot;
+    
+    System.out.println("Enter a string: ");
+    message = scan.nextLine();
+    System.out.println("Enter a pivot string: ");
+    pivot = scan.nextLine();
+    
+    int s = message.indexOf(pivot);
+    
+    if(s != -1)
     {
-        String message = scan.nextLine();
-        return message;
+      String leftOfPivot = message.substring(0, s);
+      String rightOfPivot = message.substring(s + pivot.length()); 
+      
+      System.out.println(rightOfPivot + pivot + leftOfPivot);
+      
     }
-
-    public static String pivotRecieve(Scanner scan)
+    else
     {
-        String pivot = scan.nextLine();
-        return pivot;
+      System.out.println("Error: Pivot String not found.");
     }
-
-    public static void pivotString(String message, String pivotString)
-    {
-
-
-
-    }
-
-    public static void main(String[] args)
-    {
-        Scanner scan = new Scanner(System.in);
-
-        String message = messageRecieve(scan);
-        String pivotString = pivotRecieve(scan);
-
-        pivotString(message, pivotString);
-
-
-    }
+    
+    
+  }
 }
