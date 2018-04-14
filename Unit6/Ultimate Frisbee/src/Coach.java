@@ -7,7 +7,7 @@ public class Coach extends Person
 	public Coach(String fn, String ln, String r)
 	{
 		super(fn, ln);
-		role = r;
+		this.role = r;
 	}
 	
 	public String toString()
